@@ -15,3 +15,26 @@ const App = () => {
 };
 
 export default App;
+
+
+//22222222222222222222222222222
+import "./App.css";
+import { useState, useEffect } from "react";
+import Singledata from "./components/SinglefakeData/Singledata";
+
+function App() {
+  const [fakeData, setfakedata] = useState([]);
+  useEffect(() => {
+    fetch("fakeData.json")
+      .then((res) => res.json())
+      .then((mydat) => setfakedata(mydat));
+  });
+  return (
+    <div>
+      {fakeData.map((singledata) => (
+        <Singledata key={singledata} {...singledata}></Singledata>
+      ))}
+    </div>
+  );
+}
+export default App;
